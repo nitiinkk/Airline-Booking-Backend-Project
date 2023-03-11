@@ -22,12 +22,24 @@
   ```
   - once you have added the above config , go to src folder and execute `npx sequelize db:create`
 
+### DB Design
+- Airplane Table
+- Flight
+- Airport
+- City
+
+  - A flight belong to an airplane but 1 airplane can be used in multiple flights.
+  - A city has many airpots but one airport belongs to city.
+  - One airport can have many flights, but a flight belongs to one airport.
+
+### Command to generate model
+`cd src/` then run command `npx sequelize model:generate --name City --attributes name:String`
 ### about sequelize
 - used `npx sequelize init` command
 - This will create following folders
     - config, contains config file, which tells CLI how to connect with database
     - models, contains all models for your project
-    - migrations, contains all migration files
+    - migrations, contains all migration files(helps to make incremental changes(add, update, remove) to table)
     - seeders, contains all seed files
 
 ### Folder stucture
