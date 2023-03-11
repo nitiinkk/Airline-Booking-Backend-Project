@@ -34,6 +34,22 @@
 
 ### Command to generate model
 `cd src/` then run command `npx sequelize model:generate --name City --attributes name:String`
+
+### Command to apply migration file to db
+`cd src ` then `npx sequelize db:migrate`
+`npx sequelize db:migrate:undo`
+mysql> desc cities;
+```
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(255) | NO  |     | NULL    |                |
+| createdAt | datetime     | NO   |     | NULL    |                |
+| updatedAt | datetime     | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+```
+
 ### about sequelize
 - used `npx sequelize init` command
 - This will create following folders
@@ -49,7 +65,7 @@
   - controllers
   - middlewares
   - models
-  - repository
+  - repository (right way to interact with models)
   - services
   - utils
 - tests
