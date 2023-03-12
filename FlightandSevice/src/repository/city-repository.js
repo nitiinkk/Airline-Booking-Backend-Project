@@ -46,6 +46,15 @@ class CityRepository {
             throw {err};
         }
     }
+
+    async getAllCities () {
+        try {
+            const cities = await City.findByAll();
+            return cities;
+        } catch (error) {
+            throw {error};
+        }
+    }
     
 }
 
