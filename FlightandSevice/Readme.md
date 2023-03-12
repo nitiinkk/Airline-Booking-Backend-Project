@@ -57,7 +57,11 @@ mysql> desc cities;
     - config, contains config file, which tells CLI how to connect with database
     - models, contains all models for your project
     - migrations, contains all migration files(helps to make incremental changes(add, update, remove) to table)
-    - seeders, contains all seed files
+    - seeders, contains all seed files (used to populate database table with sample or test data)
+
+### Command to generate seeders
+- `npx sequelize-cli seed:generate --name add-airports` creates a sedder file
+- `npx sequelize db:seed:all` to see data into db
 
 ### Tables
 City -> id, name, created_at, updated_at
