@@ -34,6 +34,7 @@
 
 ### Command to generate model
 `cd src/` then run command `npx sequelize model:generate --name City --attributes name:String`
+`npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer`
 
 ### Command to apply migration file to db
 `cd src ` then `npx sequelize db:migrate`
@@ -57,6 +58,11 @@ mysql> desc cities;
     - models, contains all models for your project
     - migrations, contains all migration files(helps to make incremental changes(add, update, remove) to table)
     - seeders, contains all seed files
+
+### Tables
+City -> id, name, created_at, updated_at
+Airport -> id, name, address, city_id, created_at, updated_at
+  Relationship : City has many airpot , but Airport belongs to one city (1 : N)
 
 ### Folder stucture
 - src/
