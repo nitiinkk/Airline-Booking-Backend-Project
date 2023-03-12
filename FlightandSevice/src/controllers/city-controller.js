@@ -24,7 +24,7 @@ const create = async (req, res) => {
 } 
 
 /* Delete : /city/:id  => req.params.id*/
-const destory = async (req, res) => {
+const destroy = async (req, res) => {
     try {
         const city = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
@@ -92,6 +92,6 @@ const get = async (req, res) => {
 module.exports = {
     create,
     update,
-    destory,
+    destroy,
     get
 }
