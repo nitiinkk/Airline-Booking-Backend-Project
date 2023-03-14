@@ -42,6 +42,7 @@
 ### Command to generate model
 `cd src/` then run command `npx sequelize model:generate --name City --attributes name:String`
 `npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer`
+`npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:integer`
 
 ### Command to apply migration file to db
 `cd src ` then `npx sequelize db:migrate`
@@ -59,7 +60,7 @@ mysql> desc cities;
 ```
 
 ### Command to generate seeders
-- `npx sequelize-cli seed:generate --name add-airports` creates a sedder file
+- `npx sequelize-cli seed:generate --name add-airports` creates a seeder file
 - `npx sequelize db:seed:all` to see data into db
 
 ### Command to Synchronizing all models at once
