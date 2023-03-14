@@ -63,6 +63,9 @@ mysql> desc cities;
 - `npx sequelize-cli seed:generate --name add-airports` creates a sedder file
 - `npx sequelize db:seed:all` to see data into db
 
+### Command to Synchronizing all models at once
+`sequelize.sync({alter : true})`
+
 ### Tables
 City -> id, name, created_at, updated_at
 Airport -> id, name, address, city_id, created_at, updated_at
