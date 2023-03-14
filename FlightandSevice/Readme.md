@@ -43,6 +43,7 @@
 `cd src/` then run command `npx sequelize model:generate --name City --attributes name:String`
 `npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer`
 `npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:integer`
+`npx sequelize model:generate --name Flights --attributes flightNumber:String,airplaneId:integer,departureAirportId:integer,arrivalAirportId:integer,arrivalTime:Date,departureTime:Date,price:integer,boardingGate:String,duration:integer,totalSeats:integer`
 
 ### Command to apply migration file to db
 `cd src ` then `npx sequelize db:migrate`
