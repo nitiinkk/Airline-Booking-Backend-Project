@@ -32,6 +32,13 @@
   - A city has many airpots but one airport belongs to city.
   - One airport can have many flights, but a flight belongs to one airport.
 
+### about sequelize
+- used `npx sequelize init` command
+- This will create following folders
+    - config, contains config file, which tells CLI how to connect with database
+    - models, contains all models for your project
+    - migrations, contains all migration files(helps to make incremental changes(add, update, remove) to table)
+    - seeders, contains all seed files (used to populate database table with sample or test data)
 ### Command to generate model
 `cd src/` then run command `npx sequelize model:generate --name City --attributes name:String`
 `npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer`
@@ -50,14 +57,6 @@ mysql> desc cities;
 | updatedAt | datetime     | NO   |     | NULL    |                |
 +-----------+--------------+------+-----+---------+----------------+
 ```
-
-### about sequelize
-- used `npx sequelize init` command
-- This will create following folders
-    - config, contains config file, which tells CLI how to connect with database
-    - models, contains all models for your project
-    - migrations, contains all migration files(helps to make incremental changes(add, update, remove) to table)
-    - seeders, contains all seed files (used to populate database table with sample or test data)
 
 ### Command to generate seeders
 - `npx sequelize-cli seed:generate --name add-airports` creates a sedder file
