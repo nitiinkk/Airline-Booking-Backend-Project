@@ -29,7 +29,7 @@ class CityRepository {
 
     async updateCity (cityId, data) {
         try {
-            const city = await City.findByPK(cityId);
+            const city = await City.findByPk(cityId);
             city.name = data.name;
             await city.save();
             return city;
@@ -40,7 +40,7 @@ class CityRepository {
 
     async getCity (cityId) {
         try {
-            const city = await City.findByPK(cityId);
+            const city = await City.findByPk(cityId);
             return city;
         }
         catch (err) {
