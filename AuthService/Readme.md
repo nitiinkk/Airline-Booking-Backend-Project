@@ -20,6 +20,7 @@
 ### Other Commands used
 `1. npx sequelize init`
 `2. go to src/ and then execute npx sequelize db:create`
+`3. npx sequelize model:generate --name User --attributes email:String,password:String`
 
 
 
