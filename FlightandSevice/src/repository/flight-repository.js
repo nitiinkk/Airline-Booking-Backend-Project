@@ -17,12 +17,13 @@ class FlightRepository {
                     {price : {[Op.lte]: data.maxPrice}},
                 ]
             })
-        }
-        if(data.minPrice) {
-            Object.assign(filter, {price : {[Op.gte]: data.minPrice} });
-        }
-        if(data.maxPrice) {
-            Object.assign(filter, {price : {[Op.lte]: data.maxPrice}});
+        } else {
+            if(data.minPrice) {
+                Object.assign(filter, {price : {[Op.gte]: data.minPrice} });
+            }
+            if(data.maxPrice) {
+                Object.assign(filter, {price : {[Op.lte]: data.maxPrice}});
+            }
         }
         return filter;
     }
