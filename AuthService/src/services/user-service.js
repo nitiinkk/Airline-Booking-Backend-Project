@@ -1,5 +1,6 @@
 //this Service layer has the buisness logic
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const UserRepository = require('../repository/user-repository');
 
 const { JWT_KEY } = require('../config/serverConfig');
@@ -38,6 +39,28 @@ class UserService {
         }
     }
 
+    async signIn (email, plainPassword) {
+        try {
+            //fetch user using the Email
+            const user = await this.userRepository.getByEmail(email);
+            
+            //if password match to what we get in req.body and in db then generate new Token
+            const passwordsMatch = this.checkPassword(plainPassword, user.password);
+
+            if (!passwordsMatch) {
+                console.log("password doesn't match");
+                throw {error : 'Incorrect password'};
+            }
+
+            const newJWT = this.createToken({email : user.email, id: user.id});
+            return newJWT;
+
+        } catch (error) {
+            console.log('error while signin in for user');
+            throw {error};
+        }
+    }
+
     createToken (user) {
         try {
             const result = jwt.sign(user, JWT_KEY, {expiresIn : '1h'});
@@ -54,6 +77,15 @@ class UserService {
             return response;
         } catch (error) {
             console.log('Something went wrong in token validation', error);
+            throw {error};
+        }
+    }
+
+    checkPassword (inputPassword, encryptedPassword) {
+        try {
+            return bcrypt.compareSync(inputPassword, encryptedPassword);
+        } catch (error) {
+            console.log('Something went wrong in comparing password', error);
             throw {error};
         }
     }

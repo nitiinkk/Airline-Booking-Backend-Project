@@ -66,10 +66,31 @@ const getById = async (req, res) => {
     }
 }
 
+const signIn = async (req, res) => {
+    try {
+        const response = await userService.signIn(req.body.email, req.body.password)
+        return res.status(200).json({
+            success: true,
+            message: 'Successfully generated the token',
+            data: response,
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: 'Something went wrong',
+            err : error,
+            data : {},
+            success: false
+        })
+    }
+}
+
 
 
 module.exports = {
     create,
     destroy,
-    getById
+    getById,
+    signIn
 }
