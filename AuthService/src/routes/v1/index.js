@@ -9,4 +9,6 @@ router.delete('/signup/:id', UserController.destroy);
 router.get('/signup/:id', UserController.getById);
 router.post('/signin', AuthRequestValidator.validateUserAuth, UserController.signIn);
 
+router.get('/isAuthenciated', UserController.isAuthenciated);
+
 module.exports = router;
