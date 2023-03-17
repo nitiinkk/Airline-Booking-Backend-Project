@@ -21,7 +21,9 @@
 `1. npx sequelize init`
 `2. go to src/ and then execute npx sequelize db:create`
 `3. npx sequelize model:generate --name User --attributes email:String,password:String`
-
+`4. npx sequelize model:generate --name Role --attributes name:String`
+`5. adding seeders file for roles table :: npx sequelize seed:generate --name add-roles`
+`6. npx sequelize db:seed --seed filename`
 
 
 ### Extra Info
@@ -38,3 +40,18 @@ client                                              server
 
 ```
 - JWT (JSON Web Token) : We use client credentials to generate the token.
+
+- Many to Many associations
+  - User can have many roles
+  - Roles can have many users
+  - So, we create a 3rd Table ie user_roles  (Two tables that have a Many-To-Many relationship require a third table that acts as the junction or join table.)
+ ```
++-----------+----------+------+-----+---------+-------+
+| Field     | Type     | Null | Key | Default | Extra |
++-----------+----------+------+-----+---------+-------+
+| createdAt | datetime | NO   |     | NULL    |       |
+| updatedAt | datetime | NO   |     | NULL    |       |
+| RoleId    | int      | NO   | PRI | NULL    |       |
+| UserId    | int      | NO   | PRI | NULL    |       |
++-----------+----------+------+-----+---------+-------+
+```
