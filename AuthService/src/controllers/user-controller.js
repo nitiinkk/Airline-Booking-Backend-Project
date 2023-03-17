@@ -16,12 +16,12 @@ const create = async (req, res) => {
         });
         
     } catch (error) {
-        return res.status(error.statusCode).json({
+         return res.status(error.statusCode).json({
             message: error.message,
-            err : error.explaination,
-            data : {},
-            success: false
-        })
+            data: {},
+            success: false,
+            err: error.explanation
+        });
     }
 }
 
