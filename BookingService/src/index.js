@@ -11,7 +11,7 @@ const setupAndStartServer = () => {
     app.use(bodyParser.json());
 
     app.use('/api', apiRoutes);
-    
+
     app.listen(PORT, () => {
         console.log(`Server started on Port ${PORT}`);
         if(process.env.SYNC_DB) {
