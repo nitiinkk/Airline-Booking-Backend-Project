@@ -20,7 +20,8 @@
 ### Other Commands used
 `1. npx sequelize init`
 `2. go to src/ and then execute npx sequelize db:create`
-`3. npx sequelize model:generate --name User --attributes email:String,password:String`
+`3. npx sequelize model:generate --name Booking --attributes flightId:integer,userId:integer,status:enum`
+`4. npx sequelize db:migrate to migrate the migrations and models in db`
 `4. npx sequelize model:generate --name Role --attributes name:String`
 `5. adding seeders file for roles table :: npx sequelize seed:generate --name add-roles`
 `6. npx sequelize db:seed --seed filename`
