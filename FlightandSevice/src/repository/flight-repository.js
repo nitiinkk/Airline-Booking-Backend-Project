@@ -40,7 +40,7 @@ class FlightRepository {
 
     async getFlight (flightId) {
         try {
-            const flights = await Flights.findAll(data);
+            const flights = await Flights.findByPk(flightId);
             return flights;
         }
         catch (err) {
@@ -56,6 +56,20 @@ class FlightRepository {
                 where : filterObject
             })
             return flights;
+        }
+        catch (err) {
+            throw {err};
+        }
+    }
+
+     async updateFlight (flightId, data) {
+        try {
+            await Flights.update(data, {
+                where : {
+                    id : flightId
+                }
+            });
+            return true;
         }
         catch (err) {
             throw {err};
