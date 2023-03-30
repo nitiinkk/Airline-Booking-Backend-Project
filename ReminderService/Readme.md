@@ -16,3 +16,5 @@
 }
 `
 ` 4. to create db : npx sequelize db:create`
+`5. to create model : npx sequelize model:generate --name NotificationTicket --attributes subject:string,content:string,recepientEmail:string,status:enum,notificationTime:date`
+`6. npx sequelize db:migrate`
