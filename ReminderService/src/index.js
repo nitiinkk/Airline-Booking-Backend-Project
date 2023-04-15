@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const {PORT} = require('./config/serverConfig');
 const ApiRoutes = require('./routes/index');
 const db = require('./models/index');
+const jobs = require('./utils/job');
 
 const setupAndStartServer = () => {
     const app = express();
@@ -17,6 +18,7 @@ const setupAndStartServer = () => {
 
     app.listen(PORT , ()=> {
         console.log(`Server started on PORT ${PORT} for RemainderService`);
+        jobs(); 
     })
 }
 
