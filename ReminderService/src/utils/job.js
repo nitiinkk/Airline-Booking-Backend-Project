@@ -10,7 +10,7 @@ const setupJobs = () => {
             sender.sendMail({
                 to: email.recepientEmail,
                 subject: email.subject,
-                content: email.content
+                text: email.content
             }, async(err, data) => {
                 if(err) {
                     console.log(err);
