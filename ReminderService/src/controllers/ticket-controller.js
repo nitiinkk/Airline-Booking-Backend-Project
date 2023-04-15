@@ -2,7 +2,6 @@
 
  const create = async (req, res) => {
     try {
-        console.log('nitinss');
         const response = await TicketService.createNotification(req.body);
         return res.status(201).json({
             success: true,
@@ -13,7 +12,7 @@
     } catch (error) {
         return res.status(500).json({
             success: false,
-            data: response,
+            data: [],
             err: error,
             message : 'Unable to register an email reminder'
         })

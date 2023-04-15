@@ -35,8 +35,20 @@ const createNotification = async (data) => {
     }
 }
 
+const updateTicket = async (ticketId, data) => {
+    try {
+        const response = await repo.update(ticketId, data);
+        return response;
+    }
+    catch (error) {
+        console.log(error); 
+
+    }
+}
+
 module.exports = {
     sendBasicMail,
     fetchPendingMails,
-    createNotification
+    createNotification,
+    updateTicket
 }

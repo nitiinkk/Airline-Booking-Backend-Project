@@ -3,6 +3,6 @@ const TicketController = require('../../controllers/ticket-controller');
 
 const router = express.Router();
 
-router.get('/ticket', TicketController.create);
+router.post('/tickets', TicketController.create);
 
 module.exports = router;
