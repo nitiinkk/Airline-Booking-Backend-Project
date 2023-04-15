@@ -1,3 +1,4 @@
 PORT = 3004
 EMAIL_ID = acinonyx219@gmail.com
 EMAIL_PASSWORD = numtelgrapbibrun
+SYNC_DB = true
