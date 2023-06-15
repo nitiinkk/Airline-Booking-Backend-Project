@@ -1,28 +1,42 @@
 const { BookingService } = require('../services/index');
+const {createChannel, publishMessage} = require('../utils/messageQueue');
+const {REMINDER_BINDING_KEY} = require('../config/serverConfig');
 const bookingService = new BookingService();
 
-const create = async (req, res) => {
-    try {
-        const response = await bookingService.createBooking(req.body);
-        return res.status(200).json({
-            message : 'Successfully completed booking',
-            success: true,
-            error : {},
-            data : response
-        })
-        
-    } catch (error) {
-        return res.status(error.statusCode).json({
-            message : error.message,
-            success: false,
-            error : error.explaination,
-            data : {}
-        });
+class BookingController {
+    constructor() {
+
     }
+    async sendMessageToQueue() {
+        const channel = await createChannel();
+        const data = {message: 'Success'};
+        publishMessage(channel, REMINDER_BINDING_KEY, JSON.stringify(data));
+        return res.status(200).json({
+            message: 'Succesfully published the event'
+        });
+
+    }
+
+    async create (req, res) {
+        try {
+            const response = await bookingService.createBooking(req.body);
+            return res.status(200).json({
+                message : 'Successfully completed booking',
+                success: true,
+                error : {},
+                data : response
+            })
+            
+        } catch (error) {
+            return res.status(error.statusCode).json({
+                message : error.message,
+                success: false,
+                error : error.explaination,
+                data : {}
+            });
+        }
+    }
+    
 }
 
-
-module.exports = {
-    create
-
-}
+module.exports = BookingController;
